@@ -98,7 +98,7 @@ names(merged_data) <- gsub("std", "Std", names(merged_data))
 
 # bind and save cleaned dataset
 cleanData <- cbind(merged_data, merged_labels, merged_subjects)
-write.table(cleanData, clean_data_path)
+write.table(cleanData, clean_data_path, row.name=FALSE)
 
 
 # 7. ============  Creating a second, independent tidy data set with the average of each variable for each activity and each subject ============
@@ -108,6 +108,6 @@ new_dataset <- aggregate(cleanData[, 1:66], by = list(cleanData$activity, cleanD
 # adjust the names of the variables
 names(new_dataset) <- c("activity", "subject", names(new_dataset)[-1:-2])
 # save the new dataset
-write.table(new_dataset, new_dataset_path)
+write.table(new_dataset, new_dataset_path, row.name=FALSE)
 
 
